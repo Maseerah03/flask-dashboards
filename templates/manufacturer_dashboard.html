@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📊 Manufacturer Insights Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background: linear-gradient(to right, #1e3c72, #2a5298);
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+        .container {
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        h1 {
+            font-weight: bold;
+        }
+        .btn-primary {
+            background-color: #ffcc00;
+            color: #1e3c72;
+            border: none;
+            font-weight: bold;
+            padding: 10px;
+            width: 100%;
+            transition: 0.3s;
+        }
+        .btn-primary:hover {
+            background-color: #ffdb4d;
+            transform: scale(1.05);
+        }
+        .error-message {
+            color: #ffcc00;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📢 Data-Driven Insights for Manufacturers</h1>
+        <form action="/" method="POST">
+            <label for="product_model">🔍 Enter the name of the product for which reviews have already been extracted and saved in the system:</label>
+            <input type="text" id="product_model" name="product_model" class="form-control" placeholder="e.g., Mobile, Lipstick, Table" required>
+
+            <label for="aspect">📌 Enter Aspect to Track:</label>
+            <input type="text" id="aspect" name="aspect" class="form-control" placeholder="e.g., Camera, Long-lasting, Durability">
+
+            <button type="submit" name="action" value="track_trends" class="btn-primary">📈 Track Trends</button>
+            <button type="submit" name="action" value="refund_optimization" class="btn-primary mt-2">📊 Get Customer Insights for Refund Optimization</button>
+        </form>
+
+        {% if error %}
+            <p class="error-message">{{ error }}</p>
+        {% endif %}
+
+        {% if trend_plot %}
+            <h3>😊📉 Sentiment Trends</h3>
+            <img src="data:image/png;base64,{{ trend_plot }}" class="img-fluid">
+        {% endif %}
+
+        {% if refund_data %}
+            <h3>📢 Customer Complaint Analysis</h3>
+            {{ refund_data|safe }}
+        {% endif %}
+    </div>
+</body>
+</html>
