@@ -1,0 +1,8 @@
+Flask
+pandas
+matplotlib
+seaborn
+spacy
+nltk
+gunicorn
+ 
