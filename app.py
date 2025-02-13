@@ -10,6 +10,15 @@ import base64
 
 # Download NLP resources
 nltk.download("vader_lexicon")
+import spacy.cli
+
+# Ensure spaCy model is installed
+try:
+    nlp = spacy.load("en_core_web_sm")
+except OSError:
+    print("Downloading 'en_core_web_sm' model...")
+    spacy.cli.download("en_core_web_sm")
+    nlp = spacy.load("en_core_web_sm")
 nlp = spacy.load("en_core_web_sm")
 sia = SentimentIntensityAnalyzer()
 
