@@ -1,10 +1,11 @@
 Flask
-pandas
+requests
+beautifulsoup4
+spacy==3.5.0
+thinc==8.1.0
+numpy==1.23.5
 matplotlib
 seaborn
-spacy
-nltk
+pandas
 gunicorn
-spacy
-en-core-web-sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.5.0/en_core_web_sm-3.5.0.tar.gz
-
+nltk
